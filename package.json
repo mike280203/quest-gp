@@ -1,0 +1,15 @@
+{
+  "name": "quest-gp",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:api": "bun --cwd apps/api run dev"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
