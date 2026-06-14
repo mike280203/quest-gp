@@ -69,4 +69,3 @@ Features:
 - Flight affiliates
 - Rental car affiliates
 - Premium subscriptions
-

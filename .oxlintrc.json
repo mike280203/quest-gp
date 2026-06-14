@@ -1,0 +1,30 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "oxc", "react", "jsx-a11y"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn",
+    "perf": "warn"
+  },
+  "rules": {
+    "no-debugger": "error",
+    "no-unused-vars": "warn",
+    "react-in-jsx-scope": "off"
+  },
+  "ignorePatterns": [
+    "node_modules/**",
+    "apps/**/node_modules/**",
+    "apps/api/src/generated/**",
+    "apps/api/prisma/migrations/**",
+    "apps/mobile/scripts/reset-project.js",
+    ".expo/**",
+    "apps/mobile/.expo/**",
+    "dist/**",
+    "out/**",
+    "coverage/**",
+    "bun.lock"
+  ],
+  "env": {
+    "builtin": true
+  }
+}

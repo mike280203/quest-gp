@@ -9,6 +9,7 @@ Diese Datei ist unser Arbeitsboard fuer Phase 1. Hake erledigte Punkte ab, damit
 - [ ] Env-Dateien und Beispiel-Env dokumentieren
 - [ ] Lokalen Entwicklungsworkflow dokumentieren
 - [ ] Expo Preview Workflow festlegen
+- [x] Oxlint und Oxfmt fuer das Monorepo einrichten
 
 ## 1. Prisma Setup
 
@@ -148,6 +149,7 @@ Diese Datei ist unser Arbeitsboard fuer Phase 1. Hake erledigte Punkte ab, damit
 ## 14. Qualitaet und Dokumentation
 
 - [ ] Type Checks ausfuehren
+- [x] Linting/Formatting Tooling einrichten
 - [ ] Linting ausfuehren
 - [ ] API manuell testen
 - [ ] Mobile Preview testen

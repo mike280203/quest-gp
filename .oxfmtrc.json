@@ -1,0 +1,14 @@
+{
+  "ignorePatterns": [
+    "node_modules/**",
+    "apps/**/node_modules/**",
+    "apps/api/src/generated/**",
+    "apps/api/prisma/migrations/**",
+    ".expo/**",
+    "apps/mobile/.expo/**",
+    "dist/**",
+    "out/**",
+    "coverage/**",
+    "bun.lock"
+  ]
+}

@@ -49,4 +49,3 @@ PostgreSQL (Supabase)
 - Build features incrementally
 - Avoid premature optimization
 - Prefer clarity over cleverness
-

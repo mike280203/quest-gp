@@ -43,6 +43,22 @@ Create `apps/api/.env` from `apps/api/.env.example` and set `DATABASE_URL` to th
 
 Do not commit real `.env` files.
 
+## Linting and Formatting
+
+Quest GP uses Oxlint and Oxfmt from the repository root.
+
+Useful commands:
+
+```bash
+bun run lint
+bun run lint:fix
+bun run format
+bun run format:check
+bun run check
+```
+
+Generated Prisma client files and migration SQL are ignored by the lint and format tools.
+
 ## Supabase
 
 For Phase 1, Supabase should provide:
