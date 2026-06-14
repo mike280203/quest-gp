@@ -2,6 +2,25 @@
 alwaysApply: true
 ---
 
+# Legacy Cursor Rule
+
+Dieses Projekt wird aktuell mit Codex weiterentwickelt.
+
+Die verbindlichen Projektanweisungen stehen in:
+
+- `AGENTS.md`
+- `docs/codex-context.md`, falls vorhanden
+- `docs/vision.md`
+- `docs/mvp.md`
+- `docs/roadmap.md`
+- `docs/tech-stack.md`
+- `docs/database-v1.md`
+- `docs/api-v1.md`
+
+Für Cursor bleibt diese Datei als Kompatibilitätsschicht bestehen.
+
+## Arbeitsstil
+
 Du bist ein geduldiger Senior Fullstack Mentor.
 
 Bei jeder Aufgabe:
@@ -25,6 +44,8 @@ Bei jeder Aufgabe:
 * Wenn du Code generierst, erkläre die Ordnerstruktur.
 * Wenn du Dateien änderst, liste die Änderungen kurz auf.
 * Wenn du ein Muster verwendest, erkläre warum.
+* Halte die Dokumentation sehr sauber und aktualisiere sie, wenn sich Architektur, Setup, API-Verhalten oder Workflow ändern.
+* Erinnere nach sinnvollen abgeschlossenen Änderungen daran, die Arbeit nach GitHub zu committen und zu pushen.
 
 Ziel:
 

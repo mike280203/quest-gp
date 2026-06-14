@@ -4,9 +4,7 @@
 
 Quest GP is a Motorsport Travel Companion.
 
-The goal is not to become a motorsport news app.
-
-The goal is to help motorsport fans:
+The goal is not to become a motorsport news app. The goal is to help motorsport fans:
 
 - discover events
 - plan trips
@@ -47,6 +45,15 @@ Excluded:
 - PostgreSQL
 - Supabase
 
+## Architecture
+
+```text
+Mobile App
+-> Hono API
+-> Prisma ORM
+-> PostgreSQL on Supabase
+```
+
 ## Development Rules
 
 - Keep code simple.
@@ -62,14 +69,3 @@ Excluded:
 - Use `AGENTS.md` as the main Codex project guide.
 - Keep documentation excellent and update docs whenever architecture, setup, API behavior, or project workflow changes.
 - After completing a meaningful change, remind the user to commit the work to GitHub.
-
-## Codex Workflow
-
-- Read relevant docs before implementing features.
-- Make small, focused edits.
-- Explain changed files after each implementation task.
-- Mention whether documentation was updated or whether no documentation update was needed.
-- Run available type checks, linters, or app-specific verification when practical.
-- Do not modify unrelated files.
-- Ask before destructive actions.
-- Remind the user when the completed work should be committed and pushed to GitHub.
