@@ -12,21 +12,21 @@ Diese Datei ist unser Arbeitsboard fuer Phase 1. Hake erledigte Punkte ab, damit
 
 ## 1. Prisma Setup
 
-- [ ] Prisma in `apps/api` installieren
-- [ ] Prisma initialisieren
-- [ ] `DATABASE_URL` fuer lokale Entwicklung vorbereiten
-- [ ] Datenmodelle aus `docs/database-v1.md` in `schema.prisma` umsetzen
-- [ ] Enum `BucketListStatus` anlegen
-- [ ] Unique Constraints und Relationen definieren
-- [ ] Prisma Client Helper fuer die API anlegen
-- [ ] Erste Migration erstellen
-- [ ] Prisma Setup in der Doku ergaenzen
+- [x] Prisma in `apps/api` installieren
+- [x] Prisma initialisieren
+- [x] `DATABASE_URL` fuer lokale Entwicklung vorbereiten
+- [x] Datenmodelle aus `docs/database-v1.md` in `schema.prisma` umsetzen
+- [x] Enum `BucketListStatus` anlegen
+- [x] Unique Constraints und Relationen definieren
+- [x] Prisma Client Helper fuer die API anlegen
+- [x] Erste Migration erstellen
+- [x] Prisma Setup in der Doku ergaenzen
 
 ## 2. Supabase Setup
 
-- [ ] Supabase Projekt erstellen
-- [ ] Supabase Postgres Connection String eintragen
-- [ ] Prisma Migration gegen Supabase ausfuehren
+- [x] Supabase Projekt erstellen
+- [x] Supabase Postgres Connection String eintragen
+- [x] Prisma Migration gegen Supabase ausfuehren
 - [ ] Supabase Auth fuer Email/Password vorbereiten
 - [ ] API Auth Strategie dokumentieren
 - [ ] Mobile Auth Strategie dokumentieren
@@ -160,4 +160,4 @@ Diese Datei ist unser Arbeitsboard fuer Phase 1. Hake erledigte Punkte ab, damit
 
 ## Aktueller Fokus
 
-- [ ] Naechster Schritt: Prisma Setup vorbereiten
+- [ ] Naechster Schritt: Seed-Daten fuer Serien, Strecken und Events anlegen

@@ -1,0 +1,147 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum BucketListStatus {
+  WISHLIST
+  PLANNED
+  VISITED
+}
+
+model User {
+  id              String           @id @default(cuid())
+  authUserId      String?          @unique
+  email           String           @unique
+  username        String?          @unique
+  displayName     String?
+  homeCity        String?
+  homeCountry     String?
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  userSeries      UserSeries[]
+  bucketListItems BucketListItem[]
+  visitedEvents   VisitedEvent[]
+}
+
+model Series {
+  id          String       @id @default(cuid())
+  name        String
+  slug        String       @unique
+  description String?
+  logoUrl     String?
+  events      Event[]
+  userSeries  UserSeries[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model Driver {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  nationality String?
+  imageUrl    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Team {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  country   String?
+  logoUrl   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Track {
+  id              String           @id @default(cuid())
+  name            String
+  slug            String           @unique
+  city            String?
+  country         String
+  latitude        Decimal?
+  longitude       Decimal?
+  imageUrl        String?
+  description     String?
+  events          Event[]
+  bucketListItems BucketListItem[]
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+}
+
+model Event {
+  id              String           @id @default(cuid())
+  name            String
+  slug            String           @unique
+  description     String?
+  startDate       DateTime
+  endDate         DateTime
+  seriesId        String
+  trackId         String
+  ticketUrl       String?
+  officialUrl     String?
+  imageUrl        String?
+  series          Series           @relation(fields: [seriesId], references: [id], onDelete: Restrict)
+  track           Track            @relation(fields: [trackId], references: [id], onDelete: Restrict)
+  bucketListItems BucketListItem[]
+  visitedEvents   VisitedEvent[]
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+
+  @@index([seriesId])
+  @@index([trackId])
+  @@index([startDate])
+}
+
+model UserSeries {
+  id        String   @id @default(cuid())
+  userId    String
+  seriesId  String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  series    Series   @relation(fields: [seriesId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, seriesId])
+  @@index([seriesId])
+}
+
+model BucketListItem {
+  id        String           @id @default(cuid())
+  userId    String
+  eventId   String?
+  trackId   String?
+  status    BucketListStatus @default(WISHLIST)
+  notes     String?
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  event     Event?           @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  track     Track?           @relation(fields: [trackId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([eventId])
+  @@index([trackId])
+}
+
+model VisitedEvent {
+  id        String   @id @default(cuid())
+  userId    String
+  eventId   String
+  visitedAt DateTime
+  rating    Int?
+  notes     String?
+  photosUrl String?
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  event     Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, eventId])
+  @@index([eventId])
+}

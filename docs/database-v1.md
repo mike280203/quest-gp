@@ -10,6 +10,8 @@ Fields:
 
 - id
 
+- authUserId
+
 - email
 
 - username
@@ -23,6 +25,10 @@ Fields:
 - createdAt
 
 - updatedAt
+
+Notes:
+
+- `authUserId` stores the Supabase Auth user id and links authentication to the local app profile.
 
 Relations:
 
