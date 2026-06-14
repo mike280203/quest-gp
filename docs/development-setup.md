@@ -68,9 +68,13 @@ The workflow lives in `.github/workflows/ci.yml` and runs:
 
 - `bun install --frozen-lockfile`
 - `bun run prisma:generate`
-- `bun run check`
+- `bun run lint`
+- `bun run format:check`
+- `bun run typecheck`
 
 CI uses a dummy `DATABASE_URL` because Prisma client generation only needs the schema and does not connect to the database.
+
+The workflow opts JavaScript actions into Node.js 24 with `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24` and pins Bun to the local development version.
 
 ## Supabase
 
