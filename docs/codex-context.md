@@ -69,3 +69,4 @@ Mobile App
 - Use `AGENTS.md` as the main Codex project guide.
 - Keep documentation excellent and update docs whenever architecture, setup, API behavior, or project workflow changes.
 - After completing a meaningful change, remind the user to commit the work to GitHub.
+- Use `docs/phase-1-mvp-checklist.md` as the step-by-step working checklist for Phase 1.
