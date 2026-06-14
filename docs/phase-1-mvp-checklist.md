@@ -10,6 +10,7 @@ Diese Datei ist unser Arbeitsboard fuer Phase 1. Hake erledigte Punkte ab, damit
 - [ ] Lokalen Entwicklungsworkflow dokumentieren
 - [ ] Expo Preview Workflow festlegen
 - [x] Oxlint und Oxfmt fuer das Monorepo einrichten
+- [x] GitHub Actions CI fuer Qualitaetschecks einrichten
 
 ## 1. Prisma Setup
 
@@ -150,6 +151,7 @@ Diese Datei ist unser Arbeitsboard fuer Phase 1. Hake erledigte Punkte ab, damit
 
 - [ ] Type Checks ausfuehren
 - [x] Linting/Formatting Tooling einrichten
+- [x] GitHub Actions Checks einrichten
 - [ ] Linting ausfuehren
 - [ ] API manuell testen
 - [ ] Mobile Preview testen

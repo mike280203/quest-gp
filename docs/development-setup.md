@@ -54,10 +54,23 @@ bun run lint
 bun run lint:fix
 bun run format
 bun run format:check
+bun run typecheck
 bun run check
 ```
 
 Generated Prisma client files and migration SQL are ignored by the lint and format tools.
+
+## Continuous Integration
+
+GitHub Actions runs the quality checks on pushes to `main` and on pull requests.
+
+The workflow lives in `.github/workflows/ci.yml` and runs:
+
+- `bun install --frozen-lockfile`
+- `bun run prisma:generate`
+- `bun run check`
+
+CI uses a dummy `DATABASE_URL` because Prisma client generation only needs the schema and does not connect to the database.
 
 ## Supabase
 
