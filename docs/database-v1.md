@@ -2,6 +2,17 @@
 
 ## Core Models
 
+## ID Strategy
+
+All primary IDs use PostgreSQL UUIDs.
+
+Reason:
+
+- UUIDs are not sequential and are harder to guess than auto-incrementing integers.
+- UUID format is easy to validate at API boundaries.
+- Supabase Auth user IDs are UUIDs, so `User.authUserId` can map cleanly to Supabase.
+- IDs stay stable and API-friendly across mobile, backend, and database layers.
+
 ### User
 
 Represents an app user.
@@ -29,6 +40,7 @@ Fields:
 Notes:
 
 - `authUserId` stores the Supabase Auth user id and links authentication to the local app profile.
+- `id` and `authUserId` are PostgreSQL UUID values.
 
 Relations:
 

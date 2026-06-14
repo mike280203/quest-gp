@@ -14,8 +14,8 @@ enum BucketListStatus {
 }
 
 model User {
-  id              String           @id @default(cuid())
-  authUserId      String?          @unique
+  id              String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  authUserId      String?          @unique @db.Uuid
   email           String           @unique
   username        String?          @unique
   displayName     String?
@@ -29,7 +29,7 @@ model User {
 }
 
 model Series {
-  id          String       @id @default(cuid())
+  id          String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   name        String
   slug        String       @unique
   description String?
@@ -41,7 +41,7 @@ model Series {
 }
 
 model Driver {
-  id          String   @id @default(cuid())
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   name        String
   slug        String   @unique
   nationality String?
@@ -51,7 +51,7 @@ model Driver {
 }
 
 model Team {
-  id        String   @id @default(cuid())
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   name      String
   slug      String   @unique
   country   String?
@@ -61,7 +61,7 @@ model Team {
 }
 
 model Track {
-  id              String           @id @default(cuid())
+  id              String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   name            String
   slug            String           @unique
   city            String?
@@ -77,14 +77,14 @@ model Track {
 }
 
 model Event {
-  id              String           @id @default(cuid())
+  id              String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   name            String
   slug            String           @unique
   description     String?
   startDate       DateTime
   endDate         DateTime
-  seriesId        String
-  trackId         String
+  seriesId        String           @db.Uuid
+  trackId         String           @db.Uuid
   ticketUrl       String?
   officialUrl     String?
   imageUrl        String?
@@ -101,9 +101,9 @@ model Event {
 }
 
 model UserSeries {
-  id        String   @id @default(cuid())
-  userId    String
-  seriesId  String
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId    String   @db.Uuid
+  seriesId  String   @db.Uuid
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   series    Series   @relation(fields: [seriesId], references: [id], onDelete: Cascade)
@@ -113,10 +113,10 @@ model UserSeries {
 }
 
 model BucketListItem {
-  id        String           @id @default(cuid())
-  userId    String
-  eventId   String?
-  trackId   String?
+  id        String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId    String           @db.Uuid
+  eventId   String?          @db.Uuid
+  trackId   String?          @db.Uuid
   status    BucketListStatus @default(WISHLIST)
   notes     String?
   createdAt DateTime         @default(now())
@@ -131,9 +131,9 @@ model BucketListItem {
 }
 
 model VisitedEvent {
-  id        String   @id @default(cuid())
-  userId    String
-  eventId   String
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId    String   @db.Uuid
+  eventId   String   @db.Uuid
   visitedAt DateTime
   rating    Int?
   notes     String?
