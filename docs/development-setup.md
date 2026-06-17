@@ -35,9 +35,12 @@ Useful commands from `apps/api`:
 bun run prisma:generate
 bun run prisma:migrate
 bun run prisma:studio
+bun run seed
 ```
 
 During development, `bun run prisma:migrate` creates and applies a migration against the configured `DATABASE_URL`.
+
+`bun run seed` inserts MVP sample data for racing series, tracks, and events. The seed script is idempotent and can be run multiple times.
 
 ## Environment Variables
 

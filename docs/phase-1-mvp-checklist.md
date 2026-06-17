@@ -36,12 +36,12 @@ Diese Datei ist unser Arbeitsboard fuer Phase 1. Hake erledigte Punkte ab, damit
 
 ## 3. Seed-Daten
 
-- [ ] Seed-Struktur fuer Prisma anlegen
-- [ ] Erste Rennserien anlegen
-- [ ] Erste Strecken anlegen
-- [ ] Erste Events anlegen
-- [ ] Seed Script in `package.json` verfuegbar machen
-- [ ] Seed-Daten pruefen
+- [x] Seed-Struktur fuer Prisma anlegen
+- [x] Erste Rennserien anlegen
+- [x] Erste Strecken anlegen
+- [x] Erste Events anlegen
+- [x] Seed Script in `package.json` verfuegbar machen
+- [x] Seed-Daten pruefen
 
 ## 4. API Foundation
 
@@ -164,4 +164,4 @@ Diese Datei ist unser Arbeitsboard fuer Phase 1. Hake erledigte Punkte ab, damit
 
 ## Aktueller Fokus
 
-- [ ] Naechster Schritt: Seed-Daten fuer Serien, Strecken und Events anlegen
+- [ ] Naechster Schritt: API Foundation und Public API Routen bauen
