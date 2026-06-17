@@ -8,6 +8,8 @@
   "type": "module",
   "scripts": {
     "dev:api": "bun run --cwd apps/api dev",
+    "dev:mobile": "bun run --cwd apps/mobile start",
+    "dev:mobile:web": "bun run --cwd apps/mobile web",
     "prisma:generate": "bun run --cwd apps/api prisma:generate",
     "lint": "oxlint .",
     "lint:fix": "oxlint . --fix",

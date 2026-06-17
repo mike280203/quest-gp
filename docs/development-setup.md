@@ -19,6 +19,35 @@ bun run dev:api
 
 The API runs at `http://localhost:3001`.
 
+## Mobile
+
+Start the Expo app from the repository root:
+
+```bash
+bun run dev:mobile
+```
+
+Start the Expo web preview:
+
+```bash
+bun run dev:mobile:web
+```
+
+For Expo Go on a physical iPhone, set `EXPO_PUBLIC_API_URL` to the LAN URL of the API server before starting Expo. `localhost` points to the phone itself, not to this development machine.
+
+Example:
+
+```bash
+$env:EXPO_PUBLIC_API_URL="http://192.168.178.20:3001"
+bun run dev:mobile
+```
+
+The API must be running at the same time:
+
+```bash
+bun run dev:api
+```
+
 ## Prisma
 
 Prisma is configured inside `apps/api`.

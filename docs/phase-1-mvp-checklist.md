@@ -105,13 +105,13 @@ Diese Datei ist unser Arbeitsboard fuer Phase 1. Hake erledigte Punkte ab, damit
 
 ## 10. Mobile Foundation
 
-- [ ] Mobile App Struktur pruefen
-- [ ] Navigation fuer MVP Screens festlegen
-- [ ] API Client Helper anlegen
-- [ ] Loading State Pattern festlegen
-- [ ] Error State Pattern festlegen
-- [ ] Empty State Pattern festlegen
-- [ ] Expo Preview starten und pruefen
+- [x] Mobile App Struktur pruefen
+- [x] Navigation fuer MVP Screens festlegen
+- [x] API Client Helper anlegen
+- [x] Loading State Pattern festlegen
+- [x] Error State Pattern festlegen
+- [x] Empty State Pattern festlegen
+- [x] Expo Preview starten und pruefen
 
 ## 11. Mobile Auth
 
@@ -164,4 +164,4 @@ Diese Datei ist unser Arbeitsboard fuer Phase 1. Hake erledigte Punkte ab, damit
 
 ## Aktueller Fokus
 
-- [ ] Naechster Schritt: Env Validation einrichten oder Mobile Foundation starten
+- [ ] Naechster Schritt: Event Detail Screen bauen
