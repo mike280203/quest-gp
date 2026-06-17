@@ -42,6 +42,8 @@ The API runs at:
 http://localhost:3001
 ```
 
+The API prints a startup banner and request logs in the terminal.
+
 Useful local API URLs:
 
 ```text

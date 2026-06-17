@@ -10,6 +10,7 @@ The API lives in `apps/api` and uses:
 - `@prisma/adapter-pg` as the Prisma PostgreSQL driver adapter
 - PostgreSQL hosted on Supabase
 - Zod for request validation
+- Pino for structured API logging
 
 Start the local API from the repository root:
 
@@ -18,6 +19,8 @@ bun run dev:api
 ```
 
 The API runs at `http://localhost:3001`.
+
+API logs are printed with Pino. During development, logs are pretty-printed in PowerShell and include request method, path, status, and duration.
 
 ## Mobile
 

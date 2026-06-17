@@ -1,11 +1,15 @@
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 
+import { logger } from "./lib/logger";
+import { requestLogger } from "./middleware/request-logger";
 import { eventRoutes } from "./routes/events";
 import { seriesRoutes } from "./routes/series";
 import { trackRoutes } from "./routes/tracks";
 
 export const app = new Hono();
+
+app.use("*", requestLogger);
 
 app.use(
   "*",
@@ -40,7 +44,7 @@ app.notFound((c) => {
 });
 
 app.onError((error, c) => {
-  console.error(error);
+  logger.error({ error }, "unhandled api error");
 
   return c.json(
     {
