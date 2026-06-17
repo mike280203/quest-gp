@@ -127,3 +127,52 @@ Format files:
 ```bash
 bun run format
 ```
+
+## Dependency Checks
+
+Audit installed dependencies:
+
+```bash
+bun run audit
+```
+
+Audit only high and critical vulnerabilities:
+
+```bash
+bun run audit:high
+```
+
+Show outdated dependencies across workspaces:
+
+```bash
+bun run deps:outdated
+```
+
+Update dependencies within the existing version ranges:
+
+```bash
+bun run deps:update
+```
+
+Update dependencies to the latest versions, including possible major updates:
+
+```bash
+bun run deps:update:latest
+```
+
+For safer manual updates:
+
+```bash
+bun run deps:update:interactive
+```
+
+After dependency updates, run:
+
+```bash
+bun run check
+```
+
+Notes:
+
+- The project uses `overrides` for selected transitive security patches.
+- Avoid broad `deps:update:latest` runs without reviewing Expo and React Native compatibility.

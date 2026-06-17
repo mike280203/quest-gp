@@ -16,11 +16,21 @@
     "format": "oxfmt . --write",
     "format:check": "oxfmt . --check",
     "typecheck": "bunx tsc -p apps/api/tsconfig.json --noEmit && bunx tsc -p apps/mobile/tsconfig.json --noEmit",
-    "check": "bun run lint && bun run format:check && bun run typecheck"
+    "check": "bun run lint && bun run format:check && bun run typecheck",
+    "audit": "bun audit",
+    "audit:high": "bun audit --audit-level=high",
+    "deps:outdated": "bun outdated --recursive",
+    "deps:update": "bun update --recursive",
+    "deps:update:latest": "bun update --recursive --latest",
+    "deps:update:interactive": "bun update --interactive --recursive"
   },
   "devDependencies": {
     "@types/bun": "latest",
     "oxfmt": "^0.54.0",
-    "oxlint": "^1.69.0"
+    "oxlint": "^1.70.0"
+  },
+  "overrides": {
+    "@hono/node-server": "^1.19.13",
+    "hono": "^4.12.25"
   }
 }

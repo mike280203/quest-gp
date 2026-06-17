@@ -119,6 +119,22 @@ CI uses a dummy `DATABASE_URL` because Prisma client generation only needs the s
 
 The workflow opts JavaScript actions into Node.js 24 with `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24` and pins Bun to the local development version.
 
+## Dependency Maintenance
+
+Use Bun from the repository root:
+
+```bash
+bun run audit
+bun run audit:high
+bun run deps:outdated
+bun run deps:update
+bun run deps:update:interactive
+```
+
+Use `bun run deps:update:latest` only when intentionally accepting possible major-version upgrades. Always run `bun run check` after dependency updates.
+
+The root `package.json` may use `overrides` for selected transitive security patches. Avoid broad dependency overrides for Expo packages unless the Expo compatibility matrix is checked first.
+
 ## Supabase
 
 For Phase 1, Supabase should provide:
