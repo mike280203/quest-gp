@@ -25,7 +25,9 @@ The generated Prisma client is written to `apps/api/src/generated/prisma` and is
 
 Prisma 7 uses a driver adapter. Quest GP uses `@prisma/adapter-pg` with the `DATABASE_URL` connection string from the API environment.
 
-All model primary keys use PostgreSQL UUIDs instead of auto-incrementing integers. This keeps public API IDs non-sequential and aligns the local `User.authUserId` field with Supabase Auth user IDs.
+All model primary keys use PostgreSQL UUIDv7 values instead of auto-incrementing integers. This keeps public API IDs non-sequential, improves index locality compared with random UUIDv4 values, and aligns the local `User.authUserId` field with Supabase Auth user IDs.
+
+PostgreSQL 17 does not include a native UUIDv7 generator, so the API migration history defines `public.uuid_v7()` and uses it as the database default for primary IDs.
 
 Useful commands from `apps/api`:
 

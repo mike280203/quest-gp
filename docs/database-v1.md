@@ -4,14 +4,21 @@
 
 ## ID Strategy
 
-All primary IDs use PostgreSQL UUIDs.
+All primary IDs use PostgreSQL UUIDv7 values.
 
 Reason:
 
 - UUIDs are not sequential and are harder to guess than auto-incrementing integers.
+- UUIDv7 values are time-ordered, which is friendlier for database indexes than random UUIDv4 values.
 - UUID format is easy to validate at API boundaries.
 - Supabase Auth user IDs are UUIDs, so `User.authUserId` can map cleanly to Supabase.
 - IDs stay stable and API-friendly across mobile, backend, and database layers.
+
+Implementation:
+
+- Supabase currently runs PostgreSQL 17 for this project.
+- PostgreSQL 17 does not provide a native UUIDv7 generator.
+- The migration `20260617120000_use_uuid_v7_defaults` creates `public.uuid_v7()` and uses it as the default for primary IDs.
 
 ### User
 
@@ -40,7 +47,8 @@ Fields:
 Notes:
 
 - `authUserId` stores the Supabase Auth user id and links authentication to the local app profile.
-- `id` and `authUserId` are PostgreSQL UUID values.
+- `id` uses UUIDv7.
+- `authUserId` stores the Supabase Auth UUID.
 
 Relations:
 
