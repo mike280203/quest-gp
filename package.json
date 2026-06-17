@@ -7,7 +7,7 @@
   ],
   "type": "module",
   "scripts": {
-    "dev:api": "bun --cwd apps/api run dev",
+    "dev:api": "bun run --cwd apps/api dev",
     "prisma:generate": "bun run --cwd apps/api prisma:generate",
     "lint": "oxlint .",
     "lint:fix": "oxlint . --fix",

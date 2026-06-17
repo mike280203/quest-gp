@@ -11,6 +11,14 @@ The API lives in `apps/api` and uses:
 - PostgreSQL hosted on Supabase
 - Zod for request validation
 
+Start the local API from the repository root:
+
+```bash
+bun run dev:api
+```
+
+The API runs at `http://localhost:3001`.
+
 ## Prisma
 
 Prisma is configured inside `apps/api`.
