@@ -45,28 +45,28 @@ Diese Datei ist unser Arbeitsboard fuer Phase 1. Hake erledigte Punkte ab, damit
 
 ## 4. API Foundation
 
-- [ ] API Ordnerstruktur festlegen
-- [ ] Health Route pruefen
-- [ ] CORS fuer lokale Mobile/Web Entwicklung einrichten
-- [ ] Einheitliches Fehlerformat festlegen
-- [ ] Request Validation Strategie festlegen
+- [x] API Ordnerstruktur festlegen
+- [x] Health Route pruefen
+- [x] CORS fuer lokale Mobile/Web Entwicklung einrichten
+- [x] Einheitliches Fehlerformat festlegen
+- [x] Request Validation Strategie festlegen
 - [ ] Env Validation einrichten
-- [ ] API README aktualisieren
+- [x] API README aktualisieren
 
 ## 5. Public API
 
-- [ ] `GET /series`
-- [ ] `GET /series/:id`
-- [ ] `GET /tracks`
-- [ ] `GET /tracks/:id`
-- [ ] `GET /events`
-- [ ] Event Filter: `seriesId`
-- [ ] Event Filter: `country`
-- [ ] Event Filter: `from`
-- [ ] Event Filter: `to`
-- [ ] `GET /events/:id`
-- [ ] Public API manuell testen
-- [ ] `docs/api-v1.md` bei Bedarf aktualisieren
+- [x] `GET /series`
+- [x] `GET /series/:id`
+- [x] `GET /tracks`
+- [x] `GET /tracks/:id`
+- [x] `GET /events`
+- [x] Event Filter: `seriesId`
+- [x] Event Filter: `country`
+- [x] Event Filter: `from`
+- [x] Event Filter: `to`
+- [x] `GET /events/:id`
+- [x] Public API manuell testen
+- [x] `docs/api-v1.md` bei Bedarf aktualisieren
 
 ## 6. Auth API
 
@@ -164,4 +164,4 @@ Diese Datei ist unser Arbeitsboard fuer Phase 1. Hake erledigte Punkte ab, damit
 
 ## Aktueller Fokus
 
-- [ ] Naechster Schritt: API Foundation und Public API Routen bauen
+- [ ] Naechster Schritt: Env Validation einrichten oder Mobile Foundation starten

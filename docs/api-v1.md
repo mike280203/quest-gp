@@ -6,6 +6,15 @@
 
 Returns API status.
 
+Response:
+
+```json
+{
+  "name": "Quest GP API",
+  "status": "running"
+}
+```
+
 ---
 
 ## Users
@@ -28,7 +37,7 @@ Returns all racing series.
 
 ### GET /series/:id
 
-Returns one racing series.
+Returns one racing series with upcoming events and tracks.
 
 ---
 
@@ -40,7 +49,7 @@ Returns all tracks.
 
 ### GET /tracks/:id
 
-Returns one track.
+Returns one track with upcoming events and series.
 
 ---
 
@@ -60,9 +69,30 @@ Filters:
 
 - to
 
+Notes:
+
+- `seriesId` must be a UUID.
+- `from` and `to` accept ISO date or datetime strings.
+- `country` is matched case-insensitively against the event track country.
+
 ### GET /events/:id
 
-Returns one event.
+Returns one event with series and track.
+
+---
+
+## Error Format
+
+Errors return:
+
+```json
+{
+  "error": {
+    "code": "ERROR_CODE",
+    "message": "Human readable message"
+  }
+}
+```
 
 ---
 

@@ -1,13 +1,4 @@
-import { Hono } from "hono";
-
-const app = new Hono();
-
-app.get("/", (c) => {
-  return c.json({
-    name: "Quest GP API",
-    status: "running",
-  });
-});
+import { app } from "./src/app";
 
 export default {
   port: 3001,

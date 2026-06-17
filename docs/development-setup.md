@@ -9,6 +9,7 @@ The API lives in `apps/api` and uses:
 - Prisma for database access
 - `@prisma/adapter-pg` as the Prisma PostgreSQL driver adapter
 - PostgreSQL hosted on Supabase
+- Zod for request validation
 
 ## Prisma
 
@@ -89,3 +90,21 @@ For Phase 1, Supabase should provide:
 - Email/password authentication
 
 The mobile app should authenticate with Supabase Auth. The API should validate the Supabase user and map it to the local `User.authUserId` field.
+
+## Public API Routes
+
+The first public MVP routes are:
+
+- `GET /series`
+- `GET /series/:id`
+- `GET /tracks`
+- `GET /tracks/:id`
+- `GET /events`
+- `GET /events/:id`
+
+Event list filters:
+
+- `seriesId`
+- `country`
+- `from`
+- `to`
