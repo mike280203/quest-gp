@@ -6,6 +6,7 @@ import {
   TabTriggerSlotProps,
   TabListProps,
 } from "expo-router/ui";
+import type { Href } from "expo-router";
 import { Pressable, View, StyleSheet } from "react-native";
 
 import { ThemedText } from "./themed-text";
@@ -19,10 +20,10 @@ export default function AppTabs() {
       <TabSlot style={{ height: "100%" }} />
       <TabList asChild>
         <CustomTabList>
-          <TabTrigger name="home" href="/" asChild>
+          <TabTrigger name="home" href={"/" as Href} asChild>
             <TabButton>Events</TabButton>
           </TabTrigger>
-          <TabTrigger name="explore" href="/explore" asChild>
+          <TabTrigger name="explore" href={"/explore" as Href} asChild>
             <TabButton>Tracks</TabButton>
           </TabTrigger>
         </CustomTabList>

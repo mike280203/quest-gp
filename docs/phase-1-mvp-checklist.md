@@ -128,7 +128,7 @@ Diese Datei ist unser Arbeitsboard fuer Phase 1. Hake erledigte Punkte ab, damit
 
 - [ ] Home Dashboard
 - [ ] Racing Calendar
-- [ ] Event Detail Screen
+- [x] Event Detail Screen
 - [ ] Favorite Series Screen
 - [ ] Bucket List Screen
 - [ ] Motorsport Resume Screen

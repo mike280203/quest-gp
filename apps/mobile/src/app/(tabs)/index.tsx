@@ -1,3 +1,4 @@
+import { Href, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { Pressable, ScrollView, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -83,6 +84,7 @@ export default function HomeScreen() {
 }
 
 function EventCard({ event }: { event: Event }) {
+  const router = useRouter();
   const startDate = new Intl.DateTimeFormat("en", {
     month: "short",
     day: "numeric",
@@ -90,7 +92,17 @@ function EventCard({ event }: { event: Event }) {
   }).format(new Date(event.startDate));
 
   return (
-    <Pressable style={({ pressed }) => [styles.cardPressable, pressed && styles.pressed]}>
+    <Pressable
+      onPress={() => {
+        const href = {
+          pathname: "/events/[id]",
+          params: { id: event.id },
+        } as unknown as Href;
+
+        router.push(href);
+      }}
+      style={({ pressed }) => [styles.cardPressable, pressed && styles.pressed]}
+    >
       <ThemedView type="backgroundElement" style={styles.card}>
         <ThemedView style={styles.cardTopline}>
           <ThemedText type="smallBold">{event.series.name}</ThemedText>
@@ -110,6 +122,7 @@ function EventCard({ event }: { event: Event }) {
           <ThemedText type="small" themeColor="textSecondary">
             {event.track.country}
           </ThemedText>
+          <ThemedText type="smallBold">View details</ThemedText>
         </ThemedView>
       </ThemedView>
     </Pressable>

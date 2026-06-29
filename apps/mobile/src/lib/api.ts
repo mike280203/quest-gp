@@ -59,6 +59,10 @@ export function getEvents() {
   return get<Event[]>("/events");
 }
 
+export function getEvent(id: string) {
+  return get<Event>(`/events/${id}`);
+}
+
 export function getTracks() {
   return get<Track[]>("/tracks");
 }
