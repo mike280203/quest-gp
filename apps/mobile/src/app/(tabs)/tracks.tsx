@@ -7,7 +7,7 @@ import { ThemedView } from "@/components/themed-view";
 import { BottomTabInset, Spacing } from "@/constants/theme";
 import { getTracks, Track } from "@/lib/api";
 
-export default function ExploreScreen() {
+export default function TracksScreen() {
   const [tracks, setTracks] = useState<Track[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);

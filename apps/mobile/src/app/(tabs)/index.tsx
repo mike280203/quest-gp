@@ -8,7 +8,7 @@ import { ThemedView } from "@/components/themed-view";
 import { BottomTabInset, Spacing } from "@/constants/theme";
 import { apiBaseUrl, Event, getEvents } from "@/lib/api";
 
-export default function HomeScreen() {
+export default function RacingCalendarScreen() {
   const [events, setEvents] = useState<Event[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
