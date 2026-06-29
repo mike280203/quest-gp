@@ -112,6 +112,7 @@ Diese Datei ist unser Arbeitsboard fuer Phase 1. Hake erledigte Punkte ab, damit
 - [x] Error State Pattern festlegen
 - [x] Empty State Pattern festlegen
 - [x] Expo Preview starten und pruefen
+- [x] Expo Starter Demo-Code entfernen
 
 ## 11. Mobile Auth
 

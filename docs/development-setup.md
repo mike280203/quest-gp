@@ -24,6 +24,13 @@ API logs are printed with Pino. During development, logs are pretty-printed in P
 
 ## Mobile
 
+The Expo starter has been trimmed down to the Quest GP MVP foundation. The mobile app keeps:
+
+- Expo Router screens in `apps/mobile/src/app`
+- shared themed primitives in `apps/mobile/src/components`
+- API client code in `apps/mobile/src/lib`
+- theme constants and hooks in `apps/mobile/src/constants` and `apps/mobile/src/hooks`
+
 Start the Expo app from the repository root:
 
 ```bash
