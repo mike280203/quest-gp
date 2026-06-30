@@ -1,15 +1,13 @@
 import { Hono } from "hono";
 
 import { notFound } from "../lib/http";
-import { prisma } from "../lib/prisma";
 import { uuidSchema } from "../lib/validation";
+import { getTrackById, listTracks } from "../services/track-service";
 
 export const trackRoutes = new Hono();
 
 trackRoutes.get("/", async (c) => {
-  const tracks = await prisma.track.findMany({
-    orderBy: [{ country: "asc" }, { name: "asc" }],
-  });
+  const tracks = await listTracks();
 
   return c.json({ data: tracks });
 });
@@ -22,15 +20,7 @@ trackRoutes.get("/:id", async (c) => {
     return notFound(c, "Track");
   }
 
-  const track = await prisma.track.findUnique({
-    where: { id: parsedId.data },
-    include: {
-      events: {
-        orderBy: { startDate: "asc" },
-        include: { series: true },
-      },
-    },
-  });
+  const track = await getTrackById(parsedId.data);
 
   if (!track) {
     return notFound(c, "Track");

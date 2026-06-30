@@ -2,8 +2,8 @@ import { Hono } from "hono";
 import { z } from "zod";
 
 import { badRequest, notFound } from "../lib/http";
-import { prisma } from "../lib/prisma";
 import { dateStringSchema, uuidSchema } from "../lib/validation";
+import { getEventById, listEvents } from "../services/event-service";
 
 const eventQuerySchema = z
   .object({
@@ -37,26 +37,7 @@ eventRoutes.get("/", async (c) => {
 
   const { seriesId, country, from, to } = parsedQuery.data;
 
-  const events = await prisma.event.findMany({
-    where: {
-      seriesId,
-      startDate: from ? { gte: new Date(from) } : undefined,
-      endDate: to ? { lte: new Date(to) } : undefined,
-      track: country
-        ? {
-            country: {
-              equals: country,
-              mode: "insensitive",
-            },
-          }
-        : undefined,
-    },
-    include: {
-      series: true,
-      track: true,
-    },
-    orderBy: { startDate: "asc" },
-  });
+  const events = await listEvents({ seriesId, country, from, to });
 
   return c.json({ data: events });
 });
@@ -69,13 +50,7 @@ eventRoutes.get("/:id", async (c) => {
     return notFound(c, "Event");
   }
 
-  const event = await prisma.event.findUnique({
-    where: { id: parsedId.data },
-    include: {
-      series: true,
-      track: true,
-    },
-  });
+  const event = await getEventById(parsedId.data);
 
   if (!event) {
     return notFound(c, "Event");

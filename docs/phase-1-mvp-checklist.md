@@ -50,8 +50,8 @@ Diese Datei ist unser Arbeitsboard fuer Phase 1. Hake erledigte Punkte ab, damit
 - [x] CORS fuer lokale Mobile/Web Entwicklung einrichten
 - [x] Einheitliches Fehlerformat festlegen
 - [x] Request Validation Strategie festlegen
-- [ ] Route-Service-Repository-Struktur fuer API Features einfuehren
-- [ ] Public Routes bei Bedarf auf Services/Repositories vorbereiten
+- [x] Route-Service-Repository-Struktur fuer API Features einfuehren
+- [x] Public Routes bei Bedarf auf Services/Repositories vorbereiten
 - [ ] GraphQL-ready Service-Grenzen dokumentieren
 - [ ] Env Validation einrichten
 - [x] API README aktualisieren
