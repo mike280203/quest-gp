@@ -41,6 +41,7 @@ Excluded:
 - TypeScript
 - Hono
 - Bun
+- pnpm
 - Prisma
 - PostgreSQL
 - Supabase

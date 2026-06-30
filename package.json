@@ -7,34 +7,27 @@
   ],
   "type": "module",
   "scripts": {
-    "dev:api": "bun run --cwd apps/api dev",
-    "dev:mobile": "bun run --cwd apps/mobile start",
-    "dev:mobile:web": "bun run --cwd apps/mobile web",
-    "prisma:generate": "bun run --cwd apps/api prisma:generate",
+    "dev:api": "corepack pnpm -C apps/api dev",
+    "dev:mobile": "corepack pnpm -C apps/mobile start",
+    "dev:mobile:web": "corepack pnpm -C apps/mobile web",
+    "prisma:generate": "corepack pnpm -C apps/api prisma:generate",
     "lint": "oxlint .",
     "lint:fix": "oxlint . --fix",
     "format": "oxfmt . --write",
     "format:check": "oxfmt . --check",
-    "typecheck": "bunx tsc -p apps/api/tsconfig.json --noEmit && bunx tsc -p apps/mobile/tsconfig.json --noEmit",
-    "check": "bun run lint && bun run format:check && bun run typecheck",
-    "audit": "bun audit",
-    "audit:high": "bun audit --audit-level=high",
-    "deps:outdated": "bun outdated --recursive",
-    "deps:update": "bun update --recursive",
-    "deps:update:latest": "bun update --recursive --latest",
-    "deps:update:interactive": "bun update --interactive --recursive"
-  },
-  "dependencies": {
-    "expo": "~56.0.12"
+    "typecheck": "corepack pnpm -C apps/api exec tsc -p tsconfig.json --noEmit && corepack pnpm -C apps/mobile exec tsc -p tsconfig.json --noEmit",
+    "check": "corepack pnpm lint && corepack pnpm format:check && corepack pnpm typecheck",
+    "audit": "corepack pnpm audit",
+    "audit:high": "corepack pnpm audit --audit-level high",
+    "deps:outdated": "corepack pnpm -r outdated",
+    "deps:update": "corepack pnpm -r update",
+    "deps:update:latest": "corepack pnpm -r update --latest",
+    "deps:update:interactive": "corepack pnpm -r update --interactive"
   },
   "devDependencies": {
     "@types/bun": "latest",
     "oxfmt": "^0.54.0",
     "oxlint": "^1.71.0"
   },
-  "overrides": {
-    "@hono/node-server": "^1.19.13",
-    "hono": "^4.12.25",
-    "uuid": "^11.1.1"
-  }
+  "packageManager": "pnpm@11.9.0"
 }

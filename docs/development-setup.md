@@ -4,7 +4,8 @@
 
 The API lives in `apps/api` and uses:
 
-- Bun for runtime and scripts
+- Bun for the local API runtime
+- pnpm for dependency management and workspace scripts
 - Hono for HTTP routing
 - Prisma for database access
 - `@prisma/adapter-pg` as the Prisma PostgreSQL driver adapter
@@ -15,7 +16,7 @@ The API lives in `apps/api` and uses:
 Start the local API from the repository root:
 
 ```bash
-bun run dev:api
+corepack pnpm dev:api
 ```
 
 The API runs at `http://localhost:3001`.
@@ -34,13 +35,13 @@ The Expo starter has been trimmed down to the Quest GP MVP foundation. The mobil
 Start the Expo app from the repository root:
 
 ```bash
-bun run dev:mobile
+corepack pnpm dev:mobile
 ```
 
 Start the Expo web preview:
 
 ```bash
-bun run dev:mobile:web
+corepack pnpm dev:mobile:web
 ```
 
 For Expo Go on a physical iPhone, set `EXPO_PUBLIC_API_URL` to the LAN URL of the API server before starting Expo. `localhost` points to the phone itself, not to this development machine.
@@ -49,13 +50,13 @@ Example:
 
 ```bash
 $env:EXPO_PUBLIC_API_URL="http://192.168.178.20:3001"
-bun run dev:mobile
+corepack pnpm dev:mobile
 ```
 
 The API must be running at the same time:
 
 ```bash
-bun run dev:api
+corepack pnpm dev:api
 ```
 
 ## Prisma
@@ -80,15 +81,15 @@ PostgreSQL 17 does not include a native UUIDv7 generator, so the API migration h
 Useful commands from `apps/api`:
 
 ```bash
-bun run prisma:generate
-bun run prisma:migrate
-bun run prisma:studio
-bun run seed
+corepack pnpm -C apps/api prisma:generate
+corepack pnpm -C apps/api prisma:migrate
+corepack pnpm -C apps/api prisma:studio
+corepack pnpm -C apps/api seed
 ```
 
-During development, `bun run prisma:migrate` creates and applies a migration against the configured `DATABASE_URL`.
+During development, `corepack pnpm -C apps/api prisma:migrate` creates and applies a migration against the configured `DATABASE_URL`.
 
-`bun run seed` inserts MVP sample data for racing series, tracks, and events. The seed script is idempotent and can be run multiple times.
+`corepack pnpm -C apps/api seed` inserts MVP sample data for racing series, tracks, and events. The seed script is idempotent and can be run multiple times.
 
 ## Environment Variables
 
@@ -103,12 +104,12 @@ Quest GP uses Oxlint and Oxfmt from the repository root.
 Useful commands:
 
 ```bash
-bun run lint
-bun run lint:fix
-bun run format
-bun run format:check
-bun run typecheck
-bun run check
+corepack pnpm lint
+corepack pnpm lint:fix
+corepack pnpm format
+corepack pnpm format:check
+corepack pnpm typecheck
+corepack pnpm check
 ```
 
 Generated Prisma client files and migration SQL are ignored by the lint and format tools.
@@ -119,31 +120,31 @@ GitHub Actions runs the quality checks on pushes to `main` and on pull requests.
 
 The workflow lives in `.github/workflows/ci.yml` and runs:
 
-- `bun install --frozen-lockfile`
-- `bun run prisma:generate`
-- `bun run lint`
-- `bun run format:check`
-- `bun run typecheck`
+- `corepack pnpm install --frozen-lockfile`
+- `corepack pnpm prisma:generate`
+- `corepack pnpm lint`
+- `corepack pnpm format:check`
+- `corepack pnpm typecheck`
 
 CI uses a dummy `DATABASE_URL` because Prisma client generation only needs the schema and does not connect to the database.
 
-The workflow opts JavaScript actions into Node.js 24 with `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24` and pins Bun to the local development version.
+The workflow opts JavaScript actions into Node.js 24 with `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24` and uses pnpm through Corepack.
 
 ## Dependency Maintenance
 
-Use Bun from the repository root:
+Use pnpm from the repository root:
 
 ```bash
-bun run audit
-bun run audit:high
-bun run deps:outdated
-bun run deps:update
-bun run deps:update:interactive
+corepack pnpm audit
+corepack pnpm audit:high
+corepack pnpm deps:outdated
+corepack pnpm deps:update
+corepack pnpm deps:update:interactive
 ```
 
-Use `bun run deps:update:latest` only when intentionally accepting possible major-version upgrades. Always run `bun run check` after dependency updates.
+Use `corepack pnpm deps:update:latest` only when intentionally accepting possible major-version upgrades. Always run `corepack pnpm check` after dependency updates.
 
-The root `package.json` may use `overrides` for selected transitive security patches. Avoid broad dependency overrides for Expo packages unless the Expo compatibility matrix is checked first.
+The root `pnpm-workspace.yaml` may use `overrides` for selected transitive security patches. Avoid broad dependency overrides for Expo packages unless the Expo compatibility matrix is checked first.
 
 ## Supabase
 

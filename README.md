@@ -8,7 +8,8 @@ Quest GP is a Motorsport Travel Companion for discovering racing events, trackin
 - React Native
 - TypeScript
 - Hono
-- Bun
+- Bun API runtime
+- pnpm package manager
 - Prisma
 - PostgreSQL on Supabase
 
@@ -17,7 +18,8 @@ Quest GP is a Motorsport Travel Companion for discovering racing events, trackin
 Install dependencies from the repository root:
 
 ```bash
-bun install
+corepack enable
+corepack pnpm install
 ```
 
 Create the API environment file:
@@ -33,7 +35,7 @@ Then set `DATABASE_URL` in `apps/api/.env` to the Supabase Postgres connection s
 From the repository root:
 
 ```bash
-bun run dev:api
+corepack pnpm dev:api
 ```
 
 The API runs at:
@@ -60,7 +62,7 @@ Use `127.0.0.1` in Bruno if `localhost` resolves to IPv6 `::1`.
 Keep the API running, then start Expo web:
 
 ```bash
-bun run dev:mobile:web
+corepack pnpm dev:mobile:web
 ```
 
 Open the Expo web URL, usually:
@@ -83,7 +85,7 @@ PowerShell example:
 
 ```powershell
 $env:EXPO_PUBLIC_API_URL="http://192.168.1.33:3001"
-bun run dev:mobile
+corepack pnpm dev:mobile
 ```
 
 Then scan the Expo QR code with Expo Go.
@@ -93,19 +95,19 @@ Then scan the Expo QR code with Expo Go.
 Generate the Prisma client:
 
 ```bash
-bun run prisma:generate
+corepack pnpm prisma:generate
 ```
 
 Run migrations from the API workspace:
 
 ```bash
-bun run --cwd apps/api prisma:migrate
+corepack pnpm -C apps/api prisma:migrate
 ```
 
 Seed MVP sample data:
 
 ```bash
-bun run --cwd apps/api seed
+corepack pnpm -C apps/api seed
 ```
 
 ## Quality Checks
@@ -113,21 +115,21 @@ bun run --cwd apps/api seed
 Run all checks:
 
 ```bash
-bun run check
+corepack pnpm check
 ```
 
 Individual commands:
 
 ```bash
-bun run lint
-bun run format:check
-bun run typecheck
+corepack pnpm lint
+corepack pnpm format:check
+corepack pnpm typecheck
 ```
 
 Format files:
 
 ```bash
-bun run format
+corepack pnpm format
 ```
 
 ## Dependency Checks
@@ -135,46 +137,46 @@ bun run format
 Audit installed dependencies:
 
 ```bash
-bun run audit
+corepack pnpm audit
 ```
 
 Audit only high and critical vulnerabilities:
 
 ```bash
-bun run audit:high
+corepack pnpm audit:high
 ```
 
 Show outdated dependencies across workspaces:
 
 ```bash
-bun run deps:outdated
+corepack pnpm deps:outdated
 ```
 
 Update dependencies within the existing version ranges:
 
 ```bash
-bun run deps:update
+corepack pnpm deps:update
 ```
 
 Update dependencies to the latest versions, including possible major updates:
 
 ```bash
-bun run deps:update:latest
+corepack pnpm deps:update:latest
 ```
 
 For safer manual updates:
 
 ```bash
-bun run deps:update:interactive
+corepack pnpm deps:update:interactive
 ```
 
 After dependency updates, run:
 
 ```bash
-bun run check
+corepack pnpm check
 ```
 
 Notes:
 
-- The project uses `overrides` for selected transitive security patches.
+- The project uses pnpm workspace `overrides` for selected transitive security patches.
 - Avoid broad `deps:update:latest` runs without reviewing Expo and React Native compatibility.

@@ -36,6 +36,7 @@ Do not add these before they are requested:
 - TypeScript
 - Hono
 - Bun
+- pnpm
 - Prisma
 - PostgreSQL
 - Supabase

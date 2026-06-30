@@ -16,6 +16,11 @@
 - REST API for Phase 1 MVP
 - GraphQL-ready service layer for a later optional `/graphql` interface
 
+## Package Management
+
+- pnpm for dependency management and workspace scripts
+- Bun remains the API runtime for local development
+
 ## Database
 
 - PostgreSQL

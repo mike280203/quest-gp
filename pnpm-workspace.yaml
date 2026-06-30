@@ -1,0 +1,16 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+
+overrides:
+  "@hono/node-server": "^1.19.13"
+  "hono": "^4.12.25"
+  "uuid": "^11.1.1"
+
+onlyBuiltDependencies:
+  - "@prisma/engines"
+  - "prisma"
+
+allowBuilds:
+  "@prisma/engines": true
+  "prisma": true
