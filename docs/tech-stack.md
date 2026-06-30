@@ -63,4 +63,6 @@ PostgreSQL (Supabase)
 - Do not add GraphQL until composed screen data makes it worth the extra complexity
 - Build new authenticated/user-owned features with Route -> Service -> Repository -> Prisma
 - Keep services reusable from REST routes and future GraphQL resolvers
+- Prefer cursor pagination for growing list endpoints
+- Add API and infrastructure rate limits before public deployment
 - Validate forms in the mobile app for UX, and validate again in the API for security

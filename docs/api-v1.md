@@ -22,6 +22,59 @@ GraphQL is not part of the initial MVP API surface. The service and repository l
 
 ---
 
+## Pagination Strategy
+
+List endpoints that can grow should support pagination before they become large production datasets.
+
+Use cursor-style pagination where practical, because it stays stable when new events or user-owned records are inserted.
+
+Initial candidates:
+
+- `GET /events`
+- `GET /tracks`
+- `GET /me/bucket-list`
+- `GET /me/visited-events`
+
+Preferred request shape:
+
+```text
+GET /events?limit=20
+GET /events?limit=20&cursor=<cursor>
+```
+
+Preferred response shape:
+
+```json
+{
+  "data": [],
+  "pageInfo": {
+    "nextCursor": null,
+    "hasNextPage": false
+  }
+}
+```
+
+`limit` should be validated by the API and capped to a safe maximum.
+
+---
+
+## Rate Limiting Strategy
+
+Rate limiting is planned as production hardening, not as a blocker for local MVP development.
+
+Use rate limits to protect:
+
+- public read endpoints from accidental loops or scraping
+- auth endpoints from brute-force attempts
+- user-owned endpoints from excessive per-user traffic
+
+Preferred layers:
+
+- API middleware for app-specific limits
+- infrastructure-level protection later, such as a reverse proxy, hosting provider, or edge layer
+
+---
+
 ## Health
 
 ### GET /
