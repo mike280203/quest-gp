@@ -5,12 +5,17 @@ import { badRequest, notFound } from "../lib/http";
 import { dateStringSchema, uuidSchema } from "../lib/validation";
 import { getEventById, listEvents } from "../services/event-service";
 
+const defaultEventPageLimit = 20;
+const maxEventPageLimit = 50;
+
 const eventQuerySchema = z
   .object({
     seriesId: uuidSchema.optional(),
     country: z.string().trim().min(1).optional(),
     from: dateStringSchema.optional(),
     to: dateStringSchema.optional(),
+    limit: z.coerce.number().int().min(1).max(maxEventPageLimit).default(defaultEventPageLimit),
+    cursor: uuidSchema.optional(),
   })
   .refine(
     (query) => {
@@ -35,11 +40,15 @@ eventRoutes.get("/", async (c) => {
     return badRequest(c, "Invalid event filters.", z.treeifyError(parsedQuery.error));
   }
 
-  const { seriesId, country, from, to } = parsedQuery.data;
+  const { seriesId, country, from, to, limit, cursor } = parsedQuery.data;
 
-  const events = await listEvents({ seriesId, country, from, to });
+  const eventPage = await listEvents({ seriesId, country, from, to }, { limit, cursor });
 
-  return c.json({ data: events });
+  if (!eventPage) {
+    return badRequest(c, "Invalid event cursor.");
+  }
+
+  return c.json(eventPage);
 });
 
 eventRoutes.get("/:id", async (c) => {

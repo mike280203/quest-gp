@@ -53,7 +53,7 @@ Diese Datei ist unser Arbeitsboard fuer Phase 1. Hake erledigte Punkte ab, damit
 - [x] Route-Service-Repository-Struktur fuer API Features einfuehren
 - [x] Public Routes bei Bedarf auf Services/Repositories vorbereiten
 - [ ] GraphQL-ready Service-Grenzen dokumentieren
-- [ ] Pagination Pattern fuer wachsende Listen definieren
+- [x] Pagination Pattern fuer wachsende Listen definieren
 - [ ] Rate-Limit Strategie fuer Production Hardening dokumentieren
 - [ ] Env Validation einrichten
 - [x] API README aktualisieren
@@ -69,7 +69,7 @@ Diese Datei ist unser Arbeitsboard fuer Phase 1. Hake erledigte Punkte ab, damit
 - [x] Event Filter: `country`
 - [x] Event Filter: `from`
 - [x] Event Filter: `to`
-- [ ] Pagination fuer `GET /events`
+- [x] Pagination fuer `GET /events`
 - [x] `GET /events/:id`
 - [x] Public API manuell testen
 - [x] `docs/api-v1.md` bei Bedarf aktualisieren

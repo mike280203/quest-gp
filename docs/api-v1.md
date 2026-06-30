@@ -144,11 +144,31 @@ Filters:
 
 - to
 
+Pagination:
+
+- limit
+
+- cursor
+
 Notes:
 
 - `seriesId` must be a UUID.
 - `from` and `to` accept ISO date or datetime strings.
 - `country` is matched case-insensitively against the event track country.
+- `limit` defaults to `20` and is capped at `50`.
+- `cursor` must be the UUID of the last event from the previous page.
+
+Response:
+
+```json
+{
+  "data": [],
+  "pageInfo": {
+    "nextCursor": null,
+    "hasNextPage": false
+  }
+}
+```
 
 ### GET /events/:id
 
