@@ -50,6 +50,9 @@ Diese Datei ist unser Arbeitsboard fuer Phase 1. Hake erledigte Punkte ab, damit
 - [x] CORS fuer lokale Mobile/Web Entwicklung einrichten
 - [x] Einheitliches Fehlerformat festlegen
 - [x] Request Validation Strategie festlegen
+- [ ] Route-Service-Repository-Struktur fuer API Features einfuehren
+- [ ] Public Routes bei Bedarf auf Services/Repositories vorbereiten
+- [ ] GraphQL-ready Service-Grenzen dokumentieren
 - [ ] Env Validation einrichten
 - [x] API README aktualisieren
 
@@ -117,6 +120,7 @@ Diese Datei ist unser Arbeitsboard fuer Phase 1. Hake erledigte Punkte ab, damit
 ## 11. Mobile Auth
 
 - [ ] Supabase Client in Mobile App einrichten
+- [ ] React Hook Form und Schema-Validation Strategie fuer Auth Forms einrichten
 - [ ] Login Screen
 - [ ] Register Screen
 - [ ] Session Handling
@@ -165,4 +169,6 @@ Diese Datei ist unser Arbeitsboard fuer Phase 1. Hake erledigte Punkte ab, damit
 
 ## Aktueller Fokus
 
-- [ ] Naechster Schritt: Event Detail Screen bauen
+- [ ] Naechster Schritt: API Architektur auf Route -> Service -> Repository -> Prisma vorbereiten
+- [ ] Danach: Auth Foundation bauen
+- [ ] Danach: Bucket List Datenlogik starten

@@ -45,6 +45,9 @@ Architecture:
 ```text
 Mobile App
 -> Hono API
+-> Route / Resolver
+-> Service
+-> Repository
 -> Prisma ORM
 -> PostgreSQL on Supabase
 ```
@@ -60,6 +63,9 @@ Mobile App
 - Use Prisma for database access from the API.
 - Keep database access out of the mobile app.
 - Build through the Hono API instead of coupling screens directly to Supabase tables.
+- Use a Route/Resolver -> Service -> Repository -> Prisma structure for new authenticated and user-owned features.
+- Keep REST as the MVP API surface, but structure services and repositories so GraphQL can be added later without duplicating business logic.
+- Use React Hook Form with schema validation for mobile forms when building auth, profile, filters, and other user input flows.
 - Comment only important or non-obvious code.
 - Keep documentation excellent and update docs whenever architecture, setup, API behavior, or project workflow changes.
 - After completing a meaningful change, remind the user to commit the work to GitHub.

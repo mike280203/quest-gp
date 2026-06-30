@@ -1,5 +1,27 @@
 # Quest GP API v1
 
+## API Architecture
+
+Phase 1 uses REST as the primary API surface.
+
+New authenticated and user-owned features should be implemented with this internal structure:
+
+```text
+Route
+-> Service
+-> Repository
+-> Prisma
+```
+
+- Routes handle HTTP details, auth context, request validation, and response formatting.
+- Services contain business rules and feature workflows.
+- Repositories contain Prisma queries and database persistence.
+- Prisma remains the only database access layer.
+
+GraphQL is not part of the initial MVP API surface. The service and repository layers should still be written so a future GraphQL resolver can call the same business logic without duplicating API behavior.
+
+---
+
 ## Health
 
 ### GET /

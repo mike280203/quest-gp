@@ -14,6 +14,13 @@
 Goal:  
 Validate that users want to track and plan motorsport experiences.
 
+Architecture focus:
+
+- Keep REST as the Phase 1 API surface.
+- Introduce Route -> Service -> Repository -> Prisma before Bucket List and other user-owned features.
+- Keep services reusable for a future GraphQL layer.
+- Use React Hook Form for mobile auth/profile/filter forms.
+
 Features:
 
 - Authentication
