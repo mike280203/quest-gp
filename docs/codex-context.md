@@ -82,6 +82,10 @@ Add pagination before list endpoints become large production datasets. Prefer cu
 
 Rate limits are planned as production hardening. They are not a blocker for local MVP development, but should be added before public deployment. Protect public routes by IP, auth routes more strictly, and user-owned routes by authenticated user where possible.
 
+Add user-facing search to event discovery before the calendar/find-event UI becomes final. Prefer `GET /events?search=...` and search across event name, track name, track city, track country, and series name.
+
+Lost-update protection is mainly relevant for user-owned `PATCH` routes. Consider optimistic concurrency with `updatedAt` or ETag/`If-Match` before public release for profile, bucket-list, and visited-event updates.
+
 ## Mobile Form Strategy
 
 Use React Hook Form for non-trivial mobile forms such as login, register, profile editing, event filters, bucket-list notes, and visited-event notes. Prefer schema-based validation, ideally with Zod, so user feedback is fast in the app while the API still performs the authoritative validation.
@@ -100,6 +104,8 @@ Use React Hook Form for non-trivial mobile forms such as login, register, profil
 - Keep REST first for MVP, but make API business logic GraphQL-ready by using services and repositories.
 - Add pagination to growing list endpoints before they become large datasets.
 - Treat rate limiting as production hardening before public launch.
+- Add search filters where users search by names or places, not IDs.
+- Consider optimistic concurrency for user-owned PATCH routes before public launch.
 - Use React Hook Form for mobile forms once auth/profile/filter flows are implemented.
 - Prefer Supabase Auth for authentication and Supabase Postgres for database hosting.
 - Use `AGENTS.md` as the main Codex project guide.

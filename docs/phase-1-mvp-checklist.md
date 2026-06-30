@@ -55,6 +55,7 @@ Diese Datei ist unser Arbeitsboard fuer Phase 1. Hake erledigte Punkte ab, damit
 - [ ] GraphQL-ready Service-Grenzen dokumentieren
 - [x] Pagination Pattern fuer wachsende Listen definieren
 - [ ] Rate-Limit Strategie fuer Production Hardening dokumentieren
+- [ ] Lost-Update Strategie fuer user-owned PATCH Routes dokumentieren
 - [ ] Env Validation einrichten
 - [x] API README aktualisieren
 
@@ -69,6 +70,7 @@ Diese Datei ist unser Arbeitsboard fuer Phase 1. Hake erledigte Punkte ab, damit
 - [x] Event Filter: `country`
 - [x] Event Filter: `from`
 - [x] Event Filter: `to`
+- [ ] Event Search: `search`
 - [x] Pagination fuer `GET /events`
 - [x] `GET /events/:id`
 - [x] Public API manuell testen

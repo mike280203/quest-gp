@@ -75,6 +75,25 @@ Preferred layers:
 
 ---
 
+## Lost Update Strategy
+
+Lost-update protection is not required for current public read endpoints.
+
+For future user-owned `PATCH` routes, evaluate optimistic concurrency before public release:
+
+- `PATCH /me`
+- `PATCH /me/bucket-list/:id`
+- `PATCH /me/visited-events/:id`
+
+Preferred approaches:
+
+- use `updatedAt` as a version value and reject stale updates with `409 Conflict`
+- or expose an `ETag` on reads and require `If-Match` on writes, returning `412 Precondition Failed` for stale versions
+
+Do not add ETags to simple public GET routes unless caching or concurrency needs justify the extra complexity.
+
+---
+
 ## Health
 
 ### GET /
@@ -144,6 +163,10 @@ Filters:
 
 - to
 
+Planned filters:
+
+- search
+
 Pagination:
 
 - limit
@@ -155,6 +178,7 @@ Notes:
 - `seriesId` must be a UUID.
 - `from` and `to` accept ISO date or datetime strings.
 - `country` is matched case-insensitively against the event track country.
+- `search` should support user-facing text search across event name, track name, track city, track country, and series name.
 - `limit` defaults to `20` and is capped at `50`.
 - `cursor` must be the UUID of the last event from the previous page.
 
