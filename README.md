@@ -53,6 +53,7 @@ http://127.0.0.1:3001/
 http://127.0.0.1:3001/events
 http://127.0.0.1:3001/series
 http://127.0.0.1:3001/tracks
+http://127.0.0.1:3001/countries
 ```
 
 Use `127.0.0.1` in Bruno if `localhost` resolves to IPv6 `::1`.

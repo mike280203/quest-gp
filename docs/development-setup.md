@@ -166,6 +166,7 @@ The first public MVP routes are:
 - `GET /tracks/:id`
 - `GET /events`
 - `GET /events/:id`
+- `GET /countries`
 
 Event list filters:
 
@@ -173,3 +174,5 @@ Event list filters:
 - `country`
 - `from`
 - `to`
+
+`GET /countries` provides the distinct track countries used to populate the Racing Calendar country filter.

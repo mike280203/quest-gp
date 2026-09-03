@@ -200,6 +200,24 @@ Returns one event with series and track.
 
 ---
 
+## Countries
+
+### GET /countries
+
+Returns the distinct countries of tracks available in the database, sorted alphabetically.
+
+The mobile app uses this list to populate the country filter in the Racing Calendar. After the user selects a country, the app requests matching events through `GET /events?country=<country>`.
+
+Response:
+
+```json
+{
+  "data": ["Belgium", "France", "Germany"]
+}
+```
+
+---
+
 ## Error Format
 
 Errors return:

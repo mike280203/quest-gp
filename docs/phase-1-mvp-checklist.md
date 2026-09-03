@@ -73,6 +73,7 @@ Diese Datei ist unser Arbeitsboard fuer Phase 1. Hake erledigte Punkte ab, damit
 - [ ] Event Search: `search`
 - [x] Pagination fuer `GET /events`
 - [x] `GET /events/:id`
+- [x] `GET /countries` fuer verfuegbare Event-Filteroptionen
 - [x] Public API manuell testen
 - [x] `docs/api-v1.md` bei Bedarf aktualisieren
 

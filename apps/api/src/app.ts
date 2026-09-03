@@ -3,6 +3,7 @@ import { cors } from "hono/cors";
 
 import { logger } from "./lib/logger";
 import { requestLogger } from "./middleware/request-logger";
+import { countryRoutes } from "./routes/countries";
 import { eventRoutes } from "./routes/events";
 import { seriesRoutes } from "./routes/series";
 import { trackRoutes } from "./routes/tracks";
@@ -30,6 +31,7 @@ app.get("/", (c) => {
 app.route("/series", seriesRoutes);
 app.route("/tracks", trackRoutes);
 app.route("/events", eventRoutes);
+app.route("/countries", countryRoutes);
 
 app.notFound((c) => {
   return c.json(
