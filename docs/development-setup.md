@@ -27,6 +27,7 @@ API logs are printed with Pino. During development, logs are pretty-printed in P
 
 The Expo starter has been trimmed down to the Quest GP MVP foundation. The mobile app keeps:
 
+- Expo SDK 57 with its matching React Native and Expo package versions
 - Expo Router screens in `apps/mobile/src/app`
 - shared themed primitives in `apps/mobile/src/components`
 - API client code in `apps/mobile/src/lib`
