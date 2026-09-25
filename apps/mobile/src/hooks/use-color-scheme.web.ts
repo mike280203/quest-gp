@@ -8,6 +8,8 @@ export function useColorScheme() {
   const [hasHydrated, setHasHydrated] = useState(false);
 
   useEffect(() => {
+    // The first client render must match static HTML before applying the device theme.
+    // oxlint-disable-next-line react/set-state-in-effect
     setHasHydrated(true);
   }, []);
 

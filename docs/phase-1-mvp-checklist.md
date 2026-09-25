@@ -1,6 +1,6 @@
 # Quest GP Phase 1 MVP Checklist
 
-Diese Datei ist unser Arbeitsboard fuer Phase 1. Hake erledigte Punkte ab, damit jederzeit klar ist, wo wir stehen.
+Diese Datei ist unser Arbeitsboard fuer Phase 1. Sie wird gemaess dem Tutor-Modus in `AGENTS.md` schrittweise bearbeitet. Ein Checklist-Punkt darf mehrere kleine Lernaufgaben umfassen. Hake nur gepruefte, erledigte Implementierungen ab und gehe nicht automatisch zum naechsten Feature ueber.
 
 ## 0. Projektbasis
 
@@ -29,10 +29,10 @@ Diese Datei ist unser Arbeitsboard fuer Phase 1. Hake erledigte Punkte ab, damit
 - [x] Supabase Projekt erstellen
 - [x] Supabase Postgres Connection String eintragen
 - [x] Prisma Migration gegen Supabase ausfuehren
-- [ ] Supabase Auth fuer Email/Password vorbereiten
-- [ ] API Auth Strategie dokumentieren
-- [ ] Mobile Auth Strategie dokumentieren
-- [ ] Supabase Setup in der Doku ergaenzen
+- [x] Supabase Auth fuer Email/Password vorbereiten
+- [x] API Auth Strategie dokumentieren
+- [x] Mobile Auth Strategie dokumentieren
+- [x] Supabase Setup in der Doku ergaenzen
 
 ## 3. Seed-Daten
 
@@ -125,7 +125,7 @@ Diese Datei ist unser Arbeitsboard fuer Phase 1. Hake erledigte Punkte ab, damit
 
 ## 11. Mobile Auth
 
-- [ ] Supabase Client in Mobile App einrichten
+- [x] Supabase Client in Mobile App einrichten
 - [ ] React Hook Form und Schema-Validation Strategie fuer Auth Forms einrichten
 - [ ] Login Screen
 - [ ] Register Screen
@@ -175,6 +175,13 @@ Diese Datei ist unser Arbeitsboard fuer Phase 1. Hake erledigte Punkte ab, damit
 
 ## Aktueller Fokus
 
-- [ ] Naechster Schritt: API Architektur auf Route -> Service -> Repository -> Prisma vorbereiten
-- [ ] Danach: Auth Foundation bauen
+Stand nach Repository-Pruefung und Wartung am 2026-09-25:
+
+- [x] Public API verwendet Route -> Service -> Repository -> Prisma
+- [x] Kompatible Dependency-Updates installieren und lokale Qualitaetschecks ausfuehren
+- [x] Supabase nach Reaktivierung pruefen: Auth Health/Settings, Public API und Migrationsstatus erfolgreich
+- [ ] Naechste Lernaufgabe: `readBearerToken` in `apps/api/src/lib/auth.ts` selbst implementieren
+- [ ] Danach: Token verifizieren, lokalen User laden/erstellen und `/me` schrittweise schuetzen
 - [ ] Danach: Bucket List Datenlogik starten
+
+Auth ist vorbereitet (Dokumentation, Umgebungsvariablen, Mobile-Supabase-Client), aber noch kein fertiger Login-/API-Auth-Flow. Die Bearer-Token-Lernaufgabe wurde bei der Wartung nicht implementiert. Details zu Checks und verbleibenden Einschraenkungen: `docs/maintenance-2026-09-25.md`.

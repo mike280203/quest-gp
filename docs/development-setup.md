@@ -21,6 +21,14 @@ corepack pnpm dev:api
 
 The API runs at `http://localhost:3001`.
 
+The `dev:api` script requires Bun on `PATH`. If Bun is unavailable in the current shell, a pinned temporary runtime can be used from the repository root:
+
+```powershell
+corepack pnpm -C apps/api dlx bun@1.4.2 --watch index.ts
+```
+
+This downloads Bun into the pnpm tool cache and does not install it globally. Keep the terminal open while using the API.
+
 API logs are printed with Pino. During development, logs are pretty-printed in PowerShell and include request method, path, status, and duration.
 
 ## Mobile
@@ -79,7 +87,7 @@ All model primary keys use PostgreSQL UUIDv7 values instead of auto-incrementing
 
 PostgreSQL 17 does not include a native UUIDv7 generator, so the API migration history defines `public.uuid_v7()` and uses it as the database default for primary IDs.
 
-Useful commands from `apps/api`:
+Useful commands from the repository root:
 
 ```bash
 corepack pnpm -C apps/api prisma:generate
@@ -96,7 +104,13 @@ During development, `corepack pnpm -C apps/api prisma:migrate` creates and appli
 
 Create `apps/api/.env` from `apps/api/.env.example` and set `DATABASE_URL` to the Supabase Postgres connection string.
 
+For authentication, also set `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` in the API environment.
+
+Create `apps/mobile/.env.local` from `apps/mobile/.env.example` and set the public Supabase project URL and publishable key. Expo only exposes variables prefixed with `EXPO_PUBLIC_` to application code.
+
 Do not commit real `.env` files.
+
+See `docs/auth-v1.md` for the Phase 1 authentication and persistent-session strategy.
 
 ## Linting and Formatting
 
