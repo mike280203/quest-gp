@@ -1,5 +1,17 @@
 # Quest GP Codex Context
 
+## Tutor-Modus fuer die weitere Arbeit
+
+`AGENTS.md` enthaelt den massgeblichen Tutor-Ablauf. Produktumfang und technische Vorgaben dieses Dokuments bleiben bestehen. Aktuelle ausdrueckliche Nutzerwuensche bestimmen, ob erklaert, reviewed oder ein begrenzter Teil implementiert werden soll.
+
+- Erklaere auf Deutsch und arbeite standardmaessig mit einer kleinen Coding-Aufgabe, die der Nutzer selbst umsetzt.
+- Jede Aufgabe nennt Ziel, Projektbezug, Datei/Einfuegestelle, Syntax/Konzepte, konkrete Hinweise und erwartetes Testverhalten. Nutze kleine unabhaengige Beispiele statt der vollstaendigen Loesung.
+- Schreibe Lernlogik nicht vorab selbst. Implementiere auf ausdruecklichen Wunsch oder hilf bei festgefahrenen Versuchen mit einer erklaerten Loesung.
+- Bei "erledigt" oder "passt so?": aktuellen Code lesen, gezielt pruefen, Richtiges und Fehler erklaeren, zuerst Hinweise zur eigenen Korrektur geben.
+- Gehe erst weiter, wenn der Schritt funktioniert und verstanden ist. Die Checkliste ist keine Erlaubnis, ganze Features autonom abzuarbeiten.
+- Behalte den vereinbarten Fullstack-Aufbau bei und erklaere neue Patterns in kleinen Schritten.
+- Pruefe den echten Repository-Stand, bevor du einen naechsten Arbeitsschritt festlegst. Nicht getestete Annahmen und veraltete Notizen kennzeichnen.
+
 ## Product
 
 Quest GP is a Motorsport Travel Companion.
@@ -66,7 +78,7 @@ Excluded:
 ## Codex Workflow
 
 - Read relevant docs before implementing features.
-- Make small, focused edits.
+- Default to small guided coding tasks; make focused edits only for user-requested implementation or explained boilerplate as defined in AGENTS.md.
 - Explain changed files after each implementation task.
 - Mention whether documentation was updated or whether no documentation update was needed.
 - Run available type checks, linters, or app-specific verification when practical.
