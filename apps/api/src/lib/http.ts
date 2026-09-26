@@ -24,3 +24,16 @@ export function badRequest(c: Context, message: string, issues?: unknown) {
     400,
   );
 }
+
+/** Erstellt eine einheitliche Fehlerantwort bei fehlender Authentifizierung. */
+export function unauthorized(c: Context) {
+  return c.json(
+    {
+      error: {
+        code: "UNAUTHORIZED",
+        message: "Authentication required.",
+      },
+    },
+    401,
+  );
+}
