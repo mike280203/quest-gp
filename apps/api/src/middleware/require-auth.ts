@@ -1,4 +1,5 @@
 import type { MiddlewareHandler } from "hono";
+import type { AuthEnv } from "../lib/auth";
 
 import { readBearerToken } from "../lib/auth";
 import { unauthorized } from "../lib/http";
@@ -13,10 +14,10 @@ import { supabase } from "../lib/supabase";
  * Middleware mit HTTP `401`.
  *
  * Dieser Zwischenstand weist auch erfolgreich geprüfte Anfragen noch ab.
- * Die Übergabe der Benutzeridentität an den Anfragekontext und die Weiterleitung
- * an die Route fehlen noch. Die Middleware ist noch nicht registriert.
+ * Die bestätigte Benutzer-ID wird bereits im Anfragekontext hinterlegt.
+ * Die Weiterleitung an die Route fehlt noch. Die Middleware ist noch nicht registriert.
  */
-export const requireAuth: MiddlewareHandler = async (c) => {
+export const requireAuth: MiddlewareHandler<AuthEnv> = async (c) => {
   const authorization = c.req.header("Authorization");
   const token = readBearerToken(authorization);
 
@@ -31,11 +32,21 @@ export const requireAuth: MiddlewareHandler = async (c) => {
   }
 
   /**
+   * Hinterlegt die bestätigte Supabase-Benutzer-ID für diese Anfrage.
+   *
+   * @remarks
+   * `authUserId` ist der in `AuthEnv` definierte Schlüssel im Kontext.
+   * Der Wert stammt ausschließlich aus der erfolgreichen Supabase-Prüfung.
+   * Nachgelagerte Handler können ihn später mit `c.get("authUserId")` auslesen.
+   */
+  c.set("authUserId", result.data.user.id);
+
+  /**
    * Verhindert die Weiterleitung, solange die Authentifizierung unvollständig ist.
    *
    * @remarks
-   * Noch umzusetzen: Den bestätigten Benutzer im Anfragekontext hinterlegen,
-   * Ausfälle des Auth-Dienstes gesondert behandeln und die Route freigeben.
+   * Noch umzusetzen: Ausfälle des Auth-Dienstes gesondert behandeln
+   * und die Route freigeben.
    */
   return unauthorized(c);
 };

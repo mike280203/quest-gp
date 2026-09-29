@@ -1,4 +1,19 @@
 /**
+ * Beschreibt die Authentifizierungsdaten im Hono-Anfragekontext.
+ *
+ * @remarks
+ * `authUserId` bezeichnet die bestätigte Supabase-Benutzer-ID.
+ * Sie ist nicht die ID des lokalen Quest-GP-Profils.
+ * type beschreibt die Form der Daten; es erzeugt noch keinen gespeicherten Wert.
+ * Variables ist der von Hono erwartete Name.
+ */
+export type AuthEnv = {
+  Variables: {
+    authUserId: string;
+  };
+};
+
+/**
  * Liest den Token aus einem `Authorization`-Header wie `Bearer <token>` aus.
  *
  * - Gibt `null` zurück, wenn der Header fehlt oder nicht den erwarteten Aufbau hat.
