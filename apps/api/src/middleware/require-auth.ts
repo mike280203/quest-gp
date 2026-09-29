@@ -13,11 +13,12 @@ import { supabase } from "../lib/supabase";
  * Meldet Supabase einen Fehler oder liefert keinen Benutzer, antwortet die
  * Middleware mit HTTP `401`.
  *
- * Dieser Zwischenstand weist auch erfolgreich geprüfte Anfragen noch ab.
- * Die bestätigte Benutzer-ID wird bereits im Anfragekontext hinterlegt.
- * Die Weiterleitung an die Route fehlt noch. Die Middleware ist noch nicht registriert.
+ * Nach erfolgreicher Prüfung wird die bestätigte Benutzer-ID im Anfragekontext
+ * hinterlegt und die nächste Middleware beziehungsweise der Route-Handler aufgerufen.
+ * Die gesonderte Behandlung von Auth-Dienst-Ausfällen fehlt noch.
+ * Die Middleware ist noch nicht registriert.
  */
-export const requireAuth: MiddlewareHandler<AuthEnv> = async (c) => {
+export const requireAuth: MiddlewareHandler<AuthEnv> = async (c, next) => {
   const authorization = c.req.header("Authorization");
   const token = readBearerToken(authorization);
 
@@ -42,11 +43,12 @@ export const requireAuth: MiddlewareHandler<AuthEnv> = async (c) => {
   c.set("authUserId", result.data.user.id);
 
   /**
-   * Verhindert die Weiterleitung, solange die Authentifizierung unvollständig ist.
+   * Führt die nachgelagerte Verarbeitung für die authentifizierte Anfrage aus.
    *
    * @remarks
-   * Noch umzusetzen: Ausfälle des Auth-Dienstes gesondert behandeln
-   * und die Route freigeben.
+   * `next()` ruft die nächste Middleware beziehungsweise den Route-Handler auf.
+   * `await` wartet auf deren Abschluss, bevor diese Middleware fortgesetzt wird.
+   * Die frühen Fehlerantworten verhindern, dass abgelehnte Anfragen hier ankommen.
    */
-  return unauthorized(c);
+  await next();
 };
