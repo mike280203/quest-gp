@@ -4,18 +4,19 @@ import type { AuthEnv } from "../lib/auth";
 import { readBearerToken } from "../lib/auth";
 import { unauthorized } from "../lib/http";
 import { supabase } from "../lib/supabase";
+import { serviceUnavailable } from "../lib/http";
+import { isAuthRetryableFetchError } from "@supabase/supabase-js";
 
 /**
  * Liest den Bearer-Token der Anfrage aus und lässt ihn von Supabase prüfen.
  *
  * @remarks
  * Ohne auslesbaren Token erfolgt kein Aufruf von Supabase.
- * Meldet Supabase einen Fehler oder liefert keinen Benutzer, antwortet die
- * Middleware mit HTTP `401`.
+ * Erkannte vorübergehende Verbindungs- und Serverfehler führen zu HTTP `503`.
+ * Andere zurückgegebene Auth-Fehler oder ein fehlender Benutzer führen zu HTTP `401`.
  *
  * Nach erfolgreicher Prüfung wird die bestätigte Benutzer-ID im Anfragekontext
  * hinterlegt und die nächste Middleware beziehungsweise der Route-Handler aufgerufen.
- * Die gesonderte Behandlung von Auth-Dienst-Ausfällen fehlt noch.
  * Die Middleware ist noch nicht registriert.
  */
 export const requireAuth: MiddlewareHandler<AuthEnv> = async (c, next) => {
@@ -27,6 +28,17 @@ export const requireAuth: MiddlewareHandler<AuthEnv> = async (c, next) => {
   }
 
   const result = await supabase.auth.getUser(token);
+
+  /**
+   * Beantwortet vorübergehende Verbindungs- und Serverfehler mit HTTP `503`.
+   *
+   * @remarks
+   * Eine nicht mögliche Token-Prüfung bestätigt keine Benutzeridentität.
+   * Interne Supabase-Fehlerdetails werden nicht an den Client weitergegeben.
+   */
+  if (isAuthRetryableFetchError(result.error)) {
+    return serviceUnavailable(c, "Authentication service temporarily unavailable.");
+  }
 
   if (result.error || !result.data.user) {
     return unauthorized(c);
