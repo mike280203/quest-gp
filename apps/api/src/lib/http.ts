@@ -37,3 +37,21 @@ export function unauthorized(c: Context) {
     401,
   );
 }
+
+/**
+ * Erstellt eine Fehlerantwort bei vorübergehender Nichtverfügbarkeit eines Dienstes.
+ *
+ * @remarks
+ * Die Nachricht beschreibt das Problem, ohne interne Fehlerdetails offenzulegen.
+ */
+export function serviceUnavailable(c: Context, message: string) {
+  return c.json(
+    {
+      error: {
+        code: "SERVICE_UNAVAILABLE",
+        message,
+      },
+    },
+    503,
+  );
+}
